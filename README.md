@@ -119,7 +119,20 @@ Add `relationships`  test to `transactions`  table.
 
 3. We want to ensure our `transactions` data is not older than 1 day. How to do this and when to run these checks?
 
-**Answer:** 1
+**Answer:** 
+
+Add freshness test to source `transactions`.
+
+Best practices is to combine 2 check up:
+
+1. First check up after our pipilene upload all data and we can trigger DAG which check all source data.
+
+```sh
+$> dbt source freshness
+```
+
+2. Second check up should run every 4 hours , if we uploading once per day. If something go wrong, we will have time to fix problem.
+
 
 4. Add tests for macros
 

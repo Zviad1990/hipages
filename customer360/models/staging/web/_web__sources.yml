@@ -9,6 +9,10 @@ sources:
     tables:
       - name: transactions
         description: Contains a record per transaction made by customers
+        loaded_at_field: "_loaded_at_utc"
+        freshness:
+          warn_after: {count: 1, period: day} 
+          error_after: {count: 2, period: day}
         columns:
           - name: id
             tests:
