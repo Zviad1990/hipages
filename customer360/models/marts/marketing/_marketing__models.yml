@@ -5,7 +5,10 @@ models:
     config:
       materialized: view
     columns:
-      - name: id
+      - name: transaction_id
         tests:
           - not_null
           - unique
+      - name: id
+        tests:
+            - not_null

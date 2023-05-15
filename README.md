@@ -1,8 +1,16 @@
+# Table of contents
+1. [Introduction](#introduction)
+2. [Pre-requisites](#paragraph1)
+3. [Development](#paragraph2)
+4. [Exercises](#paragraph3)
+4. [Exercises/Solution](#paragraph4)
+
+### Introduction <a name="introduction"></a>
 This project is intended as an exercise for Analytics Engineering roles. 
 
 It focuses on **Customer 360** (or **Single Customer View**): a unified view of customer interactions that powers use cases ranging from personalized recommendations to customer segmentation.  
 
-### Pre-requisites
+### Pre-requisites <a name="paragraph1"></a>
 
 The project assumes these tools are available:
 
@@ -12,7 +20,7 @@ The project assumes these tools are available:
 
 You'd likely need a Postgres client to see what models look like. Here's [one](https://dbeaver.io/).
 
-### Development
+### Development <a name="paragraph2"></a>
 
 The `integration_tests` directory is set up to work through this exercise, including:
 + starting a Postgres container and seeding it with fake data
@@ -46,7 +54,7 @@ $> make models
 $> make teardown
 ```
 
-### Exercises
+### Exercises <a name="paragraph3"></a>
 
 Responses/solutions to these exercises can be:
 + code changes
@@ -81,5 +89,60 @@ Please attempt as many of these as possible:
 8. Think of how you can implement the following (what additional datasets would you use, how will the models look etc). We will explore these add-ons during tech interview stage. Additional points, if you can implement them now!
    + Product Category Recommender - how to implement Next Best Product Category?
    + Data Sharing: how would you implement PII on this data, so it can be safely shared with, say, partners?
+
+
+### Exercises/Solution <a name="paragraph4"></a>
+
+1. Fix the failing tests
+
+**Answer:** 
+
+`Contacts.csv`
+
+Problem is with source. `Contacts.csv` has same `id` in last 2 rows. In this kind of situation need to fix `id` in source and reupload data in our target DB. For this test we can change `id` in last row or delete last row at all. I will choose to delete.
+
+`transactions`
+
+Also add 'Kitchen' to accepted values in test 
+
+`contacts_joined_with_transactions`
+
+Change Left Join to Inner to fix data problem when we have transaction information by didn't have information about contacts. When Contact information wil be fixed and fill relefant and full data Then this dataset will be automatically updated.
+
+2. Add a test to validate the referential integrity of the `transactions` table (`contact_id` refers to a valid contact) and ensure it passes
+
+**Answer:** 1
+
+3. We want to ensure our `transactions` data is not older than 1 day. How to do this and when to run these checks?
+
+**Answer:** 1
+
+4. Add tests for macros
+
+**Answer:** 1
+
+5. Macros contain Postgres-specific functions, however our production environment is in Databricks. How would you refactor them, to allow switching between these two syntax?
+
+**Answer:** 1
+
+6. We'd like to enhance the `customers` model by adding few more attributes:
+   + `first_purchase_date` and `last_purchase_date` (time of first and last purchase respectively)
+   + total amount of purchase per category eg. columns like `app_and_games_amount`, `beauty_amount` etc. (refer to `_web__sources.yml` for a static list of product categories)
+   
+   Please update the `customers` model for these columns. Also, write singular test(s) to validate the logic.
+
+**Answer:** 1
+
+7. Any other improvements you'd like to make?
+
+**Answer:** 1
+
+8. Think of how you can implement the following (what additional datasets would you use, how will the models look etc). We will explore these add-ons during tech interview stage. Additional points, if you can implement them now!
+   + Product Category Recommender - how to implement Next Best Product Category?
+   + Data Sharing: how would you implement PII on this data, so it can be safely shared with, say, partners?
+
+**Answer:** 1
+
+
 
 
