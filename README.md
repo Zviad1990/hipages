@@ -93,7 +93,8 @@ Please attempt as many of these as possible:
 
 ### Exercises/Solution <a name="paragraph4"></a>
 
-1. Fix the failing tests
+
+1 . Fix the failing tests
 
 **Answer:** 
 
@@ -109,7 +110,7 @@ Also add 'Kitchen' to accepted values in test
 
 Change Left Join to Inner to fix data problem when we have transaction information by didn't have information about contacts. When Contact information wil be fixed and fill relefant and full data Then this dataset will be automatically updated.
 
-2. Add a test to validate the referential integrity of the `transactions` table (`contact_id` refers to a valid contact) and ensure it passes
+2 . Add a test to validate the referential integrity of the `transactions` table (`contact_id` refers to a valid contact) and ensure it passes
 
 **Answer:** 
 
@@ -117,7 +118,7 @@ Found 1 transactions with `contact_id` was not in distinct id from `Contacts.csv
 
 Add `relationships`  test to `transactions`  table.
 
-3. We want to ensure our `transactions` data is not older than 1 day. How to do this and when to run these checks?
+3 . We want to ensure our `transactions` data is not older than 1 day. How to do this and when to run these checks?
 
 **Answer:** 
 
@@ -140,7 +141,7 @@ $> dbt source freshness
 
 Add simple test for age calculation `test_macro_age_in_years.sql`.
 
-5. Macros contain Postgres-specific functions, however our production environment is in Databricks. How would you refactor them, to allow switching between these two syntax?
+5 . Macros contain Postgres-specific functions, however our production environment is in Databricks. How would you refactor them, to allow switching between these two syntax?
 
 **Answer:** 
 We can use dbt adapters to reuse one function in different syntax's. For databricks we can try [dbt-databricks](https://github.com/databricks/dbt-databricks) .
@@ -148,7 +149,7 @@ We can use dbt adapters to reuse one function in different syntax's. For databri
 But better way, to have similar environment's in dev and prod and same syntax.
 
 
-6. We'd like to enhance the `customers` model by adding few more attributes:
+6 . We'd like to enhance the `customers` model by adding few more attributes:
    + `first_purchase_date` and `last_purchase_date` (time of first and last purchase respectively)
    + total amount of purchase per category eg. columns like `app_and_games_amount`, `beauty_amount` etc. (refer to `_web__sources.yml` for a static list of product categories)
    
@@ -156,17 +157,25 @@ But better way, to have similar environment's in dev and prod and same syntax.
 
 **Answer:** 
 - add columns to `customers` model
-- add  `test_customer_category_amount`
+- add `test_customer_category_amount`
 
-7. Any other improvements you'd like to make?
+7 . Any other improvements you'd like to make?
 
-**Answer:** 1
+**Answer:** 
+- add few test for models for each layer
+- add freshnes test for relevant sources
+- add Category model with different attributes 
+- add dbt unit-testing
+- add default styling sqlfmt
+- add tags for models to make flexible updates
 
-8. Think of how you can implement the following (what additional datasets would you use, how will the models look etc). We will explore these add-ons during tech interview stage. Additional points, if you can implement them now!
+8 . Think of how you can implement the following (what additional datasets would you use, how will the models look etc). We will explore these add-ons during tech interview stage. Additional points, if you can implement them now!
    + Product Category Recommender - how to implement Next Best Product Category?
    + Data Sharing: how would you implement PII on this data, so it can be safely shared with, say, partners?
 
-**Answer:** 1
+**Answer:** 
+
+Add category model for statistics. It will help to understand which category more popular and who is mail auditory.
 
 
 
