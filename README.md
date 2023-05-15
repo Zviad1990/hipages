@@ -154,7 +154,9 @@ But better way, to have similar environment's in dev and prod and same syntax.
    
    Please update the `customers` model for these columns. Also, write singular test(s) to validate the logic.
 
-**Answer:** 1
+**Answer:** 
+- add columns to `customers` model
+- add  `test_customer_category_amount`
 
 7. Any other improvements you'd like to make?
 
