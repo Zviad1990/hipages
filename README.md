@@ -134,13 +134,19 @@ $> dbt source freshness
 2. Second check up should run every 4 hours , if we uploading once per day. If something go wrong, we will have time to fix problem.
 
 
-4. Add tests for macros
+4 . Add tests for macros.
 
-**Answer:** 1
+**Answer:** 
+
+Add simple test for age calculation `test_macro_age_in_years.sql`.
 
 5. Macros contain Postgres-specific functions, however our production environment is in Databricks. How would you refactor them, to allow switching between these two syntax?
 
-**Answer:** 1
+**Answer:** 
+We can use dbt adapters to reuse one function in different syntax's. For databricks we can try [dbt-databricks](https://github.com/databricks/dbt-databricks) .
+
+But better way, to have similar environment's in dev and prod and same syntax.
+
 
 6. We'd like to enhance the `customers` model by adding few more attributes:
    + `first_purchase_date` and `last_purchase_date` (time of first and last purchase respectively)
