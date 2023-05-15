@@ -111,7 +111,11 @@ Change Left Join to Inner to fix data problem when we have transaction informati
 
 2. Add a test to validate the referential integrity of the `transactions` table (`contact_id` refers to a valid contact) and ensure it passes
 
-**Answer:** 1
+**Answer:** 
+
+Found 1 transactions with `contact_id` was not in distinct id from `Contacts.csv` . Maybe it was damaged id from exercises 1. It possible to change and return full data, but for now i will move on as it is.
+
+Add `relationships`  test to `transactions`  table.
 
 3. We want to ensure our `transactions` data is not older than 1 day. How to do this and when to run these checks?
 
