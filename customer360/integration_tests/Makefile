@@ -6,7 +6,7 @@ help: ## Display this help.
 
 .PHONY: setup
 setup: ## Starts DB in a docker container, installs DBT packages (including the parent) and seeds the DB
-	docker-compose up -d 
+	docker compose up -d 
 	@echo $(SEP)
 	dbt deps
 	@echo $(SEP)
@@ -14,7 +14,7 @@ setup: ## Starts DB in a docker container, installs DBT packages (including the 
 
 .PHONY: teardown
 teardown: ## Shuts down the docker container(s) and cleans up DBT artifacts
-	docker-compose down
+	docker compose down
 	@echo $(SEP)
 	dbt clean
 
